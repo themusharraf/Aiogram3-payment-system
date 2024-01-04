@@ -7,5 +7,5 @@ async def order(message: Message, bot: Bot):
         chat_id=message.chat_id,
         title="Order alert Telegram bot",
         description="Order alert Telegram bot price product payment ",
-        payload="Payment through"
+        payload="Payment bot orqali", # noqa
     )
