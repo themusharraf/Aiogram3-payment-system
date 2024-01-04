@@ -32,6 +32,7 @@ async def location(message: Message):
 
 
 async def main():
+
     dp.message.register(order, F.text == "pay")
     dp.pre_checkout_query.register(pre_checkout_query)
     dp.message.register(successful_payment, F.content_type == ContentType.SUCCESSFUL_PAYMENT)
