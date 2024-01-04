@@ -5,7 +5,7 @@ from root import Payments_Token
 
 async def order(message: Message, bot: Bot):
     await bot.send_invoice(
-        chat_id=message.chat_id,
+        chat_id=message.chat.id,
         title="Order alert Telegram bot",
         description="Order alert Telegram bot price product payment ",
         payload="Payment bot orqali",  # noqa
@@ -14,17 +14,17 @@ async def order(message: Message, bot: Bot):
         prices=[
             LabeledPrice(
                 label="discount",
-                amount=-2000,
+                amount=300,
 
             ),
             LabeledPrice(
                 label="Bonus",
-                amount=-1500,
+                amount=100,
 
             )
         ],
         max_tip_amount=5000,
-        suggested_tip_amounts=[1000, 2000, 4000],
+        suggested_tip_amounts=[100, 200, 400],
         start_parameter="ALL NC",
         provider_data=None,
         photo_url="https://images.uzum.uz/cm3b39taqb253442d710/original.jpg",

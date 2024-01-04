@@ -1,12 +1,12 @@
 import asyncio
 import logging
-import random
 
 from aiogram import Bot, Dispatcher, F
 from aiogram.filters import Command
-from aiogram.types import Message
+from aiogram.types import Message, ContentType
 from aiogram import types
 from root import TOKEN
+from payments import order, pre_checkout_query, successful_payment
 
 logging.basicConfig(level=logging.INFO)
 
@@ -32,6 +32,9 @@ async def location(message: Message):
 
 
 async def main():
+    dp.message.register(order, F.text == "pay")
+    dp.pre_checkout_query.register(pre_checkout_query)
+    dp.message.register(successful_payment, F.content_type == ContentType.SUCCESSFUL_PAYMENT)
     await dp.start_polling(bot)
 
 
